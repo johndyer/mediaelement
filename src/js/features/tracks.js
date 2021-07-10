@@ -731,7 +731,7 @@ Object.assign(MediaElementPlayer.prototype, {
 
 				t.media.setCurrentTime(parseFloat(self.value));
 				if (t.media.paused) {
-					t.media.play();
+					t.media.play(true);
 				}
 			});
 		}

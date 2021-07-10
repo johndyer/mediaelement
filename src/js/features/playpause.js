@@ -50,9 +50,9 @@ Object.assign(MediaElementPlayer.prototype, {
 		play.innerHTML = `<button type="button" aria-controls="${t.id}" title="${playTitle}" aria-label="${pauseTitle}" tabindex="0"></button>`;
 		play.addEventListener('click', () => {
 			if (t.paused) {
-				t.play();
+				t.play(true);
 			} else {
-				t.pause();
+				t.pause(true);
 			}
 		});
 

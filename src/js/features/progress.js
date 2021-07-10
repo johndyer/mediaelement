@@ -96,7 +96,7 @@ Object.assign(MediaElementPlayer.prototype, {
 					
 					// pause to track current time
 					if (!player.paused) {
-						player.pause();
+						player.pause(true);
 					}
 
 					// make sure time is updated after 'pause' event is processed
@@ -106,7 +106,7 @@ Object.assign(MediaElementPlayer.prototype, {
 
 					// start again to track new time
 					setTimeout(function() {
-						player.play();
+						player.play(true);
 					}, 0);
 				}
 			}
@@ -134,7 +134,7 @@ Object.assign(MediaElementPlayer.prototype, {
 					
 					// pause to track current time
 					if (!player.paused) {
-						player.pause();
+						player.pause(true);
 					}
 
 					// make sure time is updated after 'pause' event is processed
@@ -144,7 +144,7 @@ Object.assign(MediaElementPlayer.prototype, {
 
 					// start again to track new time
 					setTimeout(function() {
-						player.play();
+						player.play(true);
 					}, 0);
 				}
 			}
@@ -343,7 +343,7 @@ Object.assign(MediaElementPlayer.prototype, {
 				}
 				if (t.forcedHandlePause) {
 					t.slider.focus();
-					t.play();
+					t.play(true);
 				}
 				t.forcedHandlePause = false;
 			}
@@ -416,9 +416,9 @@ Object.assign(MediaElementPlayer.prototype, {
 					case 32: // space
 						if (IS_FIREFOX) {
 							if (t.paused) {
-								t.play();
+								t.play(true);
 							} else {
-								t.pause();
+								t.pause(true);
 							}
 						}
 						return;
@@ -429,7 +429,7 @@ Object.assign(MediaElementPlayer.prototype, {
 				seekTime = seekTime < 0 || isNaN(seekTime) ? 0 : (seekTime >= duration ? duration : Math.floor(seekTime));
 				lastKeyPressTime = new Date();
 				if (!startedPaused) {
-					player.pause();
+					player.pause(true);
 				}
 
 				// make sure time is updated after 'pause' event is processed
@@ -460,7 +460,7 @@ Object.assign(MediaElementPlayer.prototype, {
 					// only handle left clicks or touch
 					if (e.which === 1 || e.which === 0) {
 						if (!t.paused) {
-							t.pause();
+							t.pause(true);
 							t.forcedHandlePause = true;
 						}
 

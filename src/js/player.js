@@ -130,12 +130,11 @@ export const config = {
 				179 // GOOGLE play/pause button
 			],
 			action: (player) => {
-
 				if (!IS_FIREFOX) {
 					if (player.paused || player.ended) {
-						player.play();
+						player.play(true);
 					} else {
-						player.pause();
+						player.pause(true);
 					}
 				}
 			}
@@ -656,11 +655,11 @@ class MediaElementPlayer {
 						;
 
 						if (t.paused && pressed) {
-							t.pause();
+							t.pause(true);
 						} else if (t.paused) {
-							t.play();
+							t.play(true);
 						} else {
-							t.pause();
+							t.pause(true);
 						}
 
 						button.setAttribute('aria-pressed', !(pressed));
@@ -1358,9 +1357,9 @@ class MediaElementPlayer {
 			layer.addEventListener('click', (e) => {
 				if (t.options.clickToPlayPause) {
 					if (t.paused) {
-						t.play();
+						t.play(true);
 					} else {
-						t.pause();
+						t.pause(true);
 					}
 
 					e.preventDefault();
@@ -1596,9 +1595,9 @@ class MediaElementPlayer {
 				;
 
 				if (t.paused) {
-					t.play();
+					t.play(true);
 				} else {
-					t.pause();
+					t.pause(true);
 				}
 
 				button.setAttribute('aria-pressed', !!pressed);
@@ -1806,11 +1805,19 @@ class MediaElementPlayer {
 		return this.getSrc();
 	}
 
-	play () {
+	/**
+	 * @param {boolean} userInteraction Use `true` when the call comes from user interaction.
+	 */
+	play (userInteraction = false) {
+		this.playUserInteraction = userInteraction;
 		this.proxy.play();
 	}
 
-	pause () {
+	/**
+	 * @param {boolean} userInteraction Use `true` when the call comes from user interaction.
+	 */
+	pause (userInteraction = false) {
+		this.pauseUserInteraction = userInteraction;
 		this.proxy.pause();
 	}
 

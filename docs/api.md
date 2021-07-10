@@ -8,6 +8,7 @@
 	* [Properties](#properties)
 	* [Methods](#methods)
 	* [Events](#events)
+	* [Examples](#examples)
 
 
 <a id="attributes"></a>
@@ -171,6 +172,8 @@ readyState | Return the current ready state of the audio/video | X |
 seeking | Return whether the user is currently seeking in the audio/video | X |
 src | Set or return the current source of the audio/video element | X | X
 volume | Set or return the volume of the audio/video | X | X
+playUserInteraction | Returns whether the last `play` call was initiated from user interaction | X |
+pauseUserInteraction | Returns whether the last `pause` call was initiated from user interaction | X |
 
 <a id="methods"></a>
 ### Methods
@@ -178,8 +181,8 @@ volume | Set or return the volume of the audio/video | X | X
 Method | Description
 -------- | ------------
 load() | Reload the audio/video element; also, it is used to update the audio/video element after changing the source or other settings
-play() | Start playing the audio/video
-pause() | Halt (pauses) the currently playing audio or video
+play(userInteraction = false) | Start playing the audio/video
+pause(userInteraction = false) | Halt (pauses) the currently playing audio or video
 stop() | **Only** present to support Flash RTMP streaming in MediaElementPlayer. The equivalent for other scenarios is `pause`
 remove() | Destroy the video/audio player instance
 canPlayType(type) | Determine whether current player can/cannot play a specific media type; `type` is MIME type and each renderer has a whitelist of them
@@ -210,5 +213,28 @@ pause | The media is paused either by the user or programmatically
 ended | The media has reach the end (a useful event for messages like "thanks for listening")
 volumechange | Volume is changed (including setting the volume to "mute")
 captionschange | The media has detected that captions have changed
+
+<a id="examples"></a>
+### Examples
+
+#### Detect if play/pause event comes from user interaction
+
+```js
+mediaElement.addEventListener('play', () => {
+	if (player.playUserInteraction) {
+		// Example: Send event to Websocket
+	}
+});
+
+mediaElement.addEventListener('pause', () => {
+	const userInteraction = player.pauseUserInteraction &&
+		// Handle when video is ended (dispatches a `pause` event)
+		player.currentTime < player.duration;
+	if (userInteraction) {
+		// Example: Send event to Websocket
+	}
+});
+```
+
 ________
 [Back to Main](../README.md)
