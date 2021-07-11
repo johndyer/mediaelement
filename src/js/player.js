@@ -766,10 +766,10 @@ class MediaElementPlayer {
 			t.media.addEventListener('ended', () => {
 				if (t.options.autoRewind) {
 					try {
-						t.setCurrentTime(0);
 						// Fixing an Android stock browser bug, where "seeked" isn't fired correctly after
 						// ending the video and jumping to the beginning
 						setTimeout(() => {
+							t.setCurrentTime(0);
 							const loadingElement = t.getElement(t.container).querySelector(`.${t.options.classPrefix}overlay-loading`);
 							if (loadingElement && loadingElement.parentNode) {
 								loadingElement.parentNode.style.display = 'none';
