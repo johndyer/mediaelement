@@ -89,7 +89,7 @@ const FacebookRenderer = {
 		fb.id = mediaElement.id + '_' + options.prefix;
 		fb.mediaElement = mediaElement;
 
-		if (mejs.Features.isiPhone && mediaElement.originalNode.getAttribute('poster')) {
+		if (mediaElement.originalNode.getAttribute('poster')) {
 			poster = mediaElement.originalNode.getAttribute('poster');
 			mediaElement.originalNode.removeAttribute('poster');
 		}
