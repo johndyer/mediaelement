@@ -466,7 +466,7 @@ class MediaElementPlayer {
 			(t.paused && t.readyState === 4 && ((!t.options.hideVideoControlsOnLoad &&
 			t.currentTime <= 0) || (!t.options.hideVideoControlsOnPause && t.currentTime > 0))) ||
 			(t.isVideo && !t.options.hideVideoControlsOnLoad && !t.readyState) ||
-			t.ended)) {
+			t.ended || t.controls.matches(':hover'))) {
 			return;
 		}
 
