@@ -1,17 +1,17 @@
 # Script to compile the swf files using Flex without Grunt
 #
-# To compile the swf files, you have to download the Flex SDK version 4.6 (only needs to be done once)
-#   Download the free flex sdk from http://sourceforge.net/adobe/flexsdk/wiki/Download%20Flex%204.6/
-#   Unzip it to a directory on your local machine (eg: /usr/local/flex_sdk_4.6)
+# To compile the swf files, you have to download the Apache Flex SDK version 3.3.2 (only needs to be done once)
+#   Download the free Apache Flex SDK from http://flex.apache.org/installer.html
+#   Unzip it to a directory on your local machine (eg: /usr/local/apache_flex_sdk_3.3)
 #   Create a symlink from the install location to this directory
-#   (eg: ln -s /usr/local/flex_sdk_4.6 mediaelement/src/flash)
+#   (eg: ln -s /usr/local/apache_flex_sdk_3.3 mediaelement/src/flash)
 #
 # If you do not have the required player global swc file, you will have to download and add it in flex:
 #   https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html
-#   The file must be placed in flex_sdk_4.6/frameworks/libs/player/10.1/playerglobal.swc
+#   The file must be placed in apache_flex_sdk_3.3/frameworks/libs/player/32/playerglobal.swc
 
-flex_path="./src/flash/flex_sdk_4.6"
-target_version="10.1"
+flex_path="./src/flash/apache_flex_sdk_4.6"
+target_version="32"
 
 
 
