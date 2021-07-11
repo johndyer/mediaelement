@@ -130,13 +130,10 @@ export const config = {
 				179 // GOOGLE play/pause button
 			],
 			action: (player) => {
-
-				if (!IS_FIREFOX) {
-					if (player.paused || player.ended) {
-						player.play();
-					} else {
-						player.pause();
-					}
+				if (player.paused || player.ended) {
+					player.play();
+				} else {
+					player.pause();
 				}
 			}
 		}
