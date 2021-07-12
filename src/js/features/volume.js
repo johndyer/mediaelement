@@ -393,8 +393,9 @@ Object.assign(MediaElementPlayer.prototype, {
 			t.globalBind('mousemove.vol', (event) => {
 				const target = event.target;
 				if (mouseIsDown && (target === volumeSlider ||
+                                        (typeof target.closest == 'function' && 
 					target.closest((mode === 'vertical' ? `.${t.options.classPrefix}volume-slider` :
-					`.${t.options.classPrefix}horizontal-volume-slider`)))) {
+					`.${t.options.classPrefix}horizontal-volume-slider`))))) {
 					handleVolumeMove(event);
 				}
 			});
